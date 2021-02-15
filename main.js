@@ -1,5 +1,25 @@
 "use strict";
 
+const cart = JSON.parse(localStorage.getItem("cart")) || [];
+function addObject(product) {
+	for (let i = 0; i < cart.length; i++) {
+		if (cart[i].id === product.id) {
+			console.log("déjà ajouté");
+			cart[i].qte += product.qte;
+			localStorage.setItem("cart", JSON.stringify(cart));
+			return;
+		}
+	}
+	cart.push(product);
+	localStorage.setItem("cart", JSON.stringify(cart));
+}
+
+addObject({ id: "b", qte: 1 });
+addObject({ id: "a", qte: 1 });
+addObject({ id: "c", qte: 1 });
+addObject({ id: "c", qte: 1 });
+console.log(cart);
+
 let cart = JSON.parse(localStorage.getItem("cart")) || [];
 const cartDOM = document.querySelector(".cart");
 const addToCartButtonsDOM = document.querySelectorAll('[data-action="ADD_TO_CART"]');
@@ -11,7 +31,7 @@ if (cart.length > 0) {
 		cartDOM.insertAdjacentHTML(
 			"beforeend",
 			`
-      <div class="cart__item">
+        <div class="cart__item">
         <img class="cart__item__image" src="${product.image}" alt="${product.name}">
         <h3 class="cart__item__name">${product.name}</h3>
         <h3 class="cart__item__price">${product.price}</h3>
@@ -21,7 +41,7 @@ if (cart.length > 0) {
         <h3 class="cart__item__quantity">${product.quantity}</h3>
         <button class="btn btn--primary btn--small" data-action="INCREASE_ITEM">&plus;</button>
         <button class="btn btn--danger btn--small" data-action="REMOVE_ITEM">&times;</button>
-      </div>
+        </div>
     `
 		);
 

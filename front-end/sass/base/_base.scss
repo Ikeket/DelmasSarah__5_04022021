@@ -11,6 +11,11 @@ section {
 	display: flex;
 	flex-direction: column;
 	min-height: 600px;
+	&.article-aside {
+		flex-direction: row;
+		margin-bottom: 15px;
+		justify-content: space-between;
+	}
 }
 .container {
 	display: flex;

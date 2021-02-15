@@ -10,7 +10,9 @@
 @import "./components/animations";
 @import "./components/buttons"; // il y a également les input, les select et option
 
+@import "./pages/cart";
 @import "./pages/homepage";
+@import "./pages/orders";
 @import "./pages/product";
 
 // dont forgive to generate .json to use Sass correctly.

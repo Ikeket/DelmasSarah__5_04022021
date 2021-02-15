@@ -1,0 +1,17 @@
+.orders {
+	border: 1px solid black;
+	flex-direction: column;
+	width: fit-content;
+	padding: 25px;
+	margin: 0 auto;
+	@include flex-CC;
+	&__box {
+		display: flex;
+		flex-direction: column;
+		margin: 15px;
+
+		&-details {
+			display: flex;
+		}
+	}
+}
