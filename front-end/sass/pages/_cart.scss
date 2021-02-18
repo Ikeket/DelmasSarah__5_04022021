@@ -1,7 +1,8 @@
 .cart {
 	display: flex;
 	flex-direction: column;
-	width: 75%;
+	margin-bottom: 50px;
+
 	&__price {
 		border-bottom: 2px solid $primary-color;
 		padding-right: 20px;
@@ -32,7 +33,7 @@
 		&-price {
 			text-align: right;
 			padding-right: 20px;
-			min-width: 100px;
+			min-width: 200px;
 		}
 	}
 	&__total {
@@ -41,16 +42,25 @@
 		padding-right: 20px;
 		padding-top: 10px;
 	}
-	&__form {
-		border: 1px solid $primary-color;
-		flex-direction: column;
-		margin: 10px;
-		width: 20%;
-		@include flex-CC;
-		& input {
-			width: 80%;
-			margin-top: 10px;
-			margin-bottom: 25px;
-		}
+}
+
+.form {
+	border: $primary-color solid 1px;
+	flex-direction: column;
+	margin: 10px auto;
+	padding: 25px;
+	width: 250px;
+	@include flex-CC;
+	@include box-shadow;
+	& label {
+		margin-top: 20px;
+		margin-bottom: 10px;
+	}
+	& input {
+		margin-bottom: 5px;
+		width: 100%;
+	}
+	& button {
+		margin-top: 25px;
 	}
 }

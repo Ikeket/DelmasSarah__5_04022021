@@ -1,5 +1,6 @@
 body {
 	background-color: $secondary-color;
+	position: relative;
 }
 section {
 	padding: 50px 0;
@@ -10,7 +11,7 @@ section {
 #main__container {
 	display: flex;
 	flex-direction: column;
-	min-height: 600px;
+	min-height: 625px;
 	&.article-aside {
 		flex-direction: row;
 		margin-bottom: 15px;

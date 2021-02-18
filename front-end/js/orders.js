@@ -1,30 +1,32 @@
 "use strict";
-let createContainer = document.querySelector("#main__container");
+
+import { cart, createContainer, sumBuying, userData } from "./utils.js";
+
 let orders = document.createElement("article");
 orders.className = "orders";
+orders.innerHTML += `<h1>Mes commandes</h1>`;
 createContainer.appendChild(orders);
 
-let paniertest = document.createElement("div");
-paniertest.className = "orders__box text-center";
-paniertest.innerHTML += `
+let order = document.createElement("div");
+order.className = "orders__box text-center";
+order.innerHTML += `
     <div class="orders__box-order">N° de commande : XXXXXXXXXXXXxx</div>
     <div class="orders__box-date">Passée le : 31 Janvier 2021</div>
-    <div class="orders__box-adresse">Livrée à : Jane Doe, 1 rue de la Rue</br>11111, PAYS</div>
+    <div class="orders__box-adresse">Livrée à : ${userData.name}</br>${userData.address}</div>
     `;
-orders.appendChild(paniertest);
+orders.appendChild(order);
 
-let commande = JSON.parse(localStorage.getItem("teddy"));
-commande.forEach((teddy) => {
+cart.forEach((teddy) => {
 	let affichertruc = document.createElement("div");
 	affichertruc.className = "orders__box-details";
 	affichertruc.innerHTML += `<h3>${teddy.name} x ${teddy.quantity}</h3>`;
 	orders.appendChild(affichertruc);
 });
 
-let prixtotal = document.createElement("div");
-prixtotal.className = "orders__box";
-prixtotal.innerHTML += `Total de la commande : 39€`;
-orders.appendChild(prixtotal);
+let totalPrice = document.createElement("div");
+totalPrice.className = "orders__box";
+totalPrice.innerHTML += `Total de la commande : ${sumBuying}€`;
+orders.appendChild(totalPrice);
 
 let returnIndex = document.createElement("h2");
 returnIndex.innerHTML += `<a href="index.html"><span class="fas fa-chevron-left"></span> Accueil</a>`;

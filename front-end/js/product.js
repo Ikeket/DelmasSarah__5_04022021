@@ -9,7 +9,7 @@ fetch(`http://localhost:3000/api/teddies/${productId}`)
 		let teddyProduct = document.createElement("article");
 		teddyProduct.className = "teddy";
 		teddyProduct.innerHTML += `<img src="${teddy.imageUrl}" class="teddy__picture" alt="Produit : ${teddy.name}" width="900">`;
-		createContainer.appendChild(teddyProduct);
+		createContainer.prepend(teddyProduct);
 
 		let teddyBox = document.createElement("div");
 		teddyBox.className = "teddy__box";
@@ -52,20 +52,15 @@ fetch(`http://localhost:3000/api/teddies/${productId}`)
 				localStorage.setItem("teddy", JSON.stringify(cart));
 			} else {
 				for (let i = 0; i < cart.length; i++) {
-					if (cart[i].name === teddyObject.name) {
-						console.log(`ils ont le même prénom ${cart[i].name}`);
+					if (teddyObject.name === cart[i].name) {
 						cart[i].quantity += 1;
 						localStorage.setItem("teddy", JSON.stringify(cart));
-						break;
-					} else {
-						cart.push(teddyObject);
-						localStorage.setItem("teddy", JSON.stringify(cart));
-						console.log(`test ${teddy.name}`);
-						break;
+						return;
 					}
 				}
+				cart.push(teddyObject);
+				localStorage.setItem("teddy", JSON.stringify(cart));
 			}
-			// window.location.reload();
 		});
 	});
 

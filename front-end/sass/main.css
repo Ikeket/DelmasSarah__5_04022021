@@ -1,5 +1,6 @@
 body {
   background-color: #ffefd1;
+  position: relative;
 }
 
 section {
@@ -18,7 +19,7 @@ section {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  min-height: 600px;
+  min-height: 625px;
 }
 
 #main__container.article-aside {
@@ -62,6 +63,7 @@ section {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  bottom: 0;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -298,7 +300,7 @@ select {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  width: 75%;
+  margin-bottom: 50px;
 }
 
 .cart__price {
@@ -345,7 +347,7 @@ select {
 .cart__box-price {
   text-align: right;
   padding-right: 20px;
-  min-width: 100px;
+  min-width: 200px;
 }
 
 .cart__total {
@@ -355,14 +357,15 @@ select {
   padding-top: 10px;
 }
 
-.cart__form {
-  border: 1px solid #8d5617;
+.form {
+  border: #8d5617 solid 1px;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  margin: 10px;
-  width: 20%;
+  margin: 10px auto;
+  padding: 25px;
+  width: 250px;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -372,12 +375,22 @@ select {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  -webkit-box-shadow: 0px 0px 12px 2px rgba(212, 211, 211, 0.308);
+          box-shadow: 0px 0px 12px 2px rgba(212, 211, 211, 0.308);
 }
 
-.cart__form input {
-  width: 80%;
-  margin-top: 10px;
-  margin-bottom: 25px;
+.form label {
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+.form input {
+  margin-bottom: 5px;
+  width: 100%;
+}
+
+.form button {
+  margin-top: 25px;
 }
 
 .product {
@@ -504,16 +517,17 @@ select {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  margin-top: 25px;
+  margin: auto 0;
   overflow: hidden;
 }
 
 .teddy img {
   height: auto;
-  width: 50%;
+  margin-right: 20px;
   -o-object-fit: cover;
      object-fit: cover;
   overflow: hidden;
+  width: 50%;
   border-radius: 15px;
 }
 

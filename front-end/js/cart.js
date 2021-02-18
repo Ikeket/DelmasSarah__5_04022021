@@ -36,19 +36,15 @@ fetch(`http://localhost:3000/api/teddies/`)
 			let price = Number(cart[y].price);
 			let quantity = Number(cart[y].quantity);
 			let sumTeddy = price * quantity;
-			console.log(sumTeddy);
 			sum += sumTeddy;
-			console.log("sum : " + sum);
 			localStorage.setItem("prices", JSON.stringify(sum));
 		}
 
 		let displayTotalCart = document.createElement("div");
+		displayTotalCart.className = "cart__total";
 		displayTotalCart.innerHTML += `Le total de votre panier s'élève à ${sum}€ `;
 		cartBox.append(displayTotalCart);
 	});
-
-let formUser = document.querySelector("#form-user");
-console.log(formUser);
 
 let returnIndex = document.createElement("h2");
 returnIndex.innerHTML += `<a href="index.html"  class="container"><span class="fas fa-chevron-left"></span> Accueil</a>`;

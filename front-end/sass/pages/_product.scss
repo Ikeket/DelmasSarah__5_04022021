@@ -1,14 +1,13 @@
 .teddy {
 	display: flex;
-	margin-top: 25px;
-
+	margin: auto 0;
 	overflow: hidden;
 	& img {
 		height: auto;
-		width: 50%;
+		margin-right: 20px;
 		object-fit: cover;
 		overflow: hidden;
-
+		width: 50%;
 		@include radius15;
 	}
 	&__box {

@@ -47,46 +47,18 @@
 		</header>
 
 		<main id="main">
-			<section id="main__container" class="container">
-				<form id="form-user">
-					<fieldset class="question" id="title" data-validation="vrule_btn_required">
-						<input
-							type="radio"
-							name="title"
-							value="Monsieur"
-							id="Monsieur"
-							class="radio"
-						/><label for="Monsieur" class="single-line">Monsieur</label>
-						<input
-							type="radio"
-							name="title"
-							value="Madame"
-							id="Madame"
-							class="radio"
-						/><label for="Madame" class="single-line">Madame</label>
-					</fieldset>
-
-					<div class="question">
-						<label for="firstName" class="single-line">Nom</label>
-						<input type="text" id="firstName" name="firstName" />
-					</div>
-
-					<div class="question">
-						<label for="secondName" class="single-line">Prénom</label>
-						<input type="text" id="secondName" name="secondName" />
-					</div>
-
-					<div class="question">
-						<label for="Adresse">Adresse</label>
-						<input type="text" id="Adresse" name="Adresse" />
-					</div>
-
-					<div class="question">
-						<label for="email">Email Address</label>
-						<input type="email" id="email" name="email" />
-					</div>
-
-					<button type="form-user-btn btn">Submit</button>
+			<section id="main__container" class="container cart__container">
+				<form method="post" class="form">
+					<label for="firstame">Prénom</label>
+					<input name="firstname" type="text" />
+					<label for="lastname">Nom</label>
+					<input name="lastname" type="text" />
+					<label for="adress">Adresse</label>
+					<input name="adress" type="text" placeholder="1, rue de la Rue" />
+					<input name="adress" type="text" placeholder="11111 VilleVille" />
+					<label for="email">Email</label>
+					<input name="email" type="text" />
+					<button type="submit" name="Submit">Envoyer</button>
 				</form>
 			</section>
 		</main>
