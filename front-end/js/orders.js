@@ -13,7 +13,7 @@ order.innerHTML += `
     <div class="orders__box-order">N° de commande : XXXXXXXXXXXXxx</div>
     <div class="orders__box-date">Passée le : 31 Janvier 2021</div>
     <div class="orders__box-adresse">Livrée à : ${user.firstName} ${user.lastName}</br>${user.address}, ${user.city}</div>
-    `;
+    `; // renvoie les données stockées dans le localstorage order
 orders.appendChild(order);
 
 cart.forEach((teddy) => {

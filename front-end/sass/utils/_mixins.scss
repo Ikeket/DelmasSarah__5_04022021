@@ -27,3 +27,32 @@
 @mixin radius25 {
 	border-radius: 25px;
 }
+
+// Media quieries
+// Small devices >= 375px
+@mixin sm {
+	@media (max-width: #{$screen-sm-min}) {
+		@content;
+	}
+}
+
+// Medium devices >= 600px
+@mixin md {
+	@media (max-width: #{$screen-md-min}) {
+		@content;
+	}
+}
+
+// Large devices >= 900px
+@mixin lg {
+	@media (max-width: #{$screen-lg-min}) {
+		@content;
+	}
+}
+
+// Large devices >= 1024px
+@mixin xl {
+	@media (max-width: #{$screen-xl-min}) {
+		@content;
+	}
+}

@@ -1,10 +1,18 @@
+/****** MEDIA QUIERIES ********
+
+375px : 
+".container"
+1024px :
+".container"
+
+******************************/
 body {
   background-color: #ffefd1;
   position: relative;
 }
 
 section {
-  padding: 50px 0;
+  padding: 25px 0;
 }
 
 #main {
@@ -19,18 +27,6 @@ section {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  min-height: 625px;
-}
-
-#main__container.article-aside {
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  margin-bottom: 15px;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
 }
 
 .container {
@@ -40,61 +36,44 @@ section {
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
   margin: 0 auto;
-  width: 80%;
+  max-width: 1000px;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
 }
 
-.error-message {
-  display: none;
+@media (max-width: 1024px) {
+  .container {
+    margin: 0 50px;
+  }
 }
 
-#footer {
+@media (max-width: 375px) {
+  .container {
+    margin: 0 25px;
+  }
+}
+
+.fa-chevron-left {
+  margin-right: 10px;
+}
+
+.homepage-return {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  background-color: #ffefd1;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
+  padding-bottom: 25px;
 }
 
 .footer {
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  bottom: 0;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  margin: 0;
-  width: 100%;
-}
-
-.footer__container {
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  background-color: #ffefd1;
   padding: 15px 0;
-  margin: 0 auto;
-  width: 80%;
+  width: 100%;
 }
 
-.footer__newsletter {
+.footer__links {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -102,40 +81,19 @@ section {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  padding: 25px;
-  width: -webkit-fit-content;
-  width: -moz-fit-content;
-  width: fit-content;
 }
 
-.footer__newsletter span,
-.footer__newsletter label {
-  margin-bottom: 25px;
+.footer__links a {
+  margin-bottom: 10px;
 }
 
-.footer__newsletter form {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-}
+/****** MEDIA QUIERIES ********
+600px :
+".teddy"
+".teddy img"
+".teddy__box"
 
-.footer__newsletter form input {
-  width: 100%;
-}
-
-.footer__link {
-  border-top: 1px solid #8d5617;
-  width: 100%;
-}
-
-.footer__link-legals a {
-  margin-left: 25px;
-}
-
-.footer__link-social a {
-  margin-right: 25px;
-}
-
+******************************/
 #header {
   -webkit-box-align: center;
       -ms-flex-align: center;
@@ -149,6 +107,13 @@ section {
       -ms-flex-direction: row;
           flex-direction: row;
   height: 70px;
+  background-color: red;
+}
+
+@media (max-width: 600px) {
+  #header {
+    height: 150px;
+  }
 }
 
 .header {
@@ -158,6 +123,17 @@ section {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
+  background-color: green;
+  width: 100%;
+}
+
+@media (max-width: 600px) {
+  .header {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
 }
 
 .header__title {
@@ -167,6 +143,12 @@ section {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+}
+
+@media (max-width: 600px) {
+  .header__title {
+    margin-bottom: 15px;
+  }
 }
 
 .navbar__link {
@@ -179,7 +161,14 @@ section {
 }
 
 .navbar__link li {
-  margin-right: 25px;
+  margin-left: 25px;
+}
+
+@media (max-width: 600px) {
+  .navbar__link li {
+    margin-left: 0;
+    margin-right: 25px;
+  }
 }
 
 .navbar__link li:hover {
@@ -201,19 +190,6 @@ select,
 button,
 .btn {
   color: white;
-}
-
-a,
-button,
-h1,
-h2,
-h3,
-label,
-select,
-input,
-option,
-.btn {
-  font-family: "Grandstander", cursive;
 }
 
 body,
@@ -417,7 +393,6 @@ select {
 
 .product__box {
   background-color: none;
-  margin: 20px;
   height: 450px;
   width: 450px;
   -webkit-transition: 500ms linear background-color;
@@ -427,6 +402,12 @@ select {
   -webkit-box-shadow: 0px 0px 12px 2px rgba(212, 211, 211, 0.308);
           box-shadow: 0px 0px 12px 2px rgba(212, 211, 211, 0.308);
   border-radius: 15px;
+}
+
+@media (max-width: 600px) {
+  .product__box {
+    width: 300px;
+  }
 }
 
 .product__box:hover {
@@ -524,12 +505,29 @@ select {
   display: flex;
 }
 
+/****** MEDIA QUIERIES ********
+
+600px :
+".teddy"
+".teddy img"
+".teddy__box"
+
+******************************/
 .teddy {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  margin: auto 0;
+  margin: 30px 0;
   overflow: hidden;
+}
+
+@media (max-width: 600px) {
+  .teddy {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
 }
 
 .teddy img {
@@ -542,31 +540,31 @@ select {
   border-radius: 15px;
 }
 
+@media (max-width: 600px) {
+  .teddy img {
+    max-height: 350px;
+    width: 100%;
+  }
+}
+
 .teddy__box {
-  margin: 15px 0;
   width: 50%;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
 }
 
+@media (max-width: 600px) {
+  .teddy__box {
+    width: 100%;
+  }
+}
+
+.teddy__box__text {
+  margin: 25px 0;
+}
+
 .teddy__box__text-description {
-  margin: 30px 0;
-}
-
-.teddy__box__form {
-  width: 50%;
-}
-
-.teddy__box__form-colors #teddy__colors {
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  margin: 10px 0;
 }
 
 .teddy__box .btn {

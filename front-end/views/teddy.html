@@ -5,18 +5,18 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
 		<link
-			href="https://fonts.googleapis.com/css2?family=Grandstander:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
-			rel="stylesheet"
-		/>
-		<link
 			rel="stylesheet"
 			href="https://cdn.jsdelivr.net/gh/jgthms/minireset.css@master/minireset.min.css"
 		/>
 		<link rel="stylesheet" href="../sass/main.css" />
-		<!-- <link rel="stylesheet" href="../css/main.css" /> -->
 		<script src="https://kit.fontawesome.com/022660c1b2.js" crossorigin="anonymous"></script>
 
-		<title></title>
+		<meta
+			name="description"
+			content="Orinours, des oursons tout mignons faits à la main avec amour"
+		/>
+
+		<title>Orinours, des oursons tout mignons</title>
 	</head>
 
 	<body>
@@ -29,7 +29,6 @@
 
 				<nav class="header__navbar navbar">
 					<ul class="navbar__link">
-						<li><a href="./orders.html" aria-label="commandes">Mes commandes</a></li>
 						<li>
 							<a href="./cart.html" aria-label="panier">
 								<i class="fas fa-shopping-cart"></i>
@@ -37,9 +36,10 @@
 							</a>
 						</li>
 						<li>
-							<a href="#account" aria-label="compte"
-								><i class="fas fa-user-circle"></i
-							></a>
+							<a href="#account" aria-label="compte">
+								<i class="fas fa-user-circle"></i>
+								<span class="cart-number"></span>
+							</a>
 						</li>
 					</ul>
 				</nav>
@@ -48,48 +48,18 @@
 
 		<main id="main">
 			<section id="main__container" class="container"></section>
+
+			<a href="index.html" class="homepage-return container"
+				><span class="fas fa-chevron-left fa-sm"></span>Accueil</a
+			>
 		</main>
 
-		<footer id="footer">
-			<div class="footer container">
-				<div class="footer__newsletter text-center">
-					<span class="far fa-envelope-open" aria-hidden="true"></span>
-					<label for="newsletter">Abonnez-vous à notre newsletter</label>
-					<form class="footer__newsletter-input text-center">
-						<input type="email" id="newsletter" name="newsletter" />
-						<button type="submit" name="email" form="newsletter" id="form-button">
-							GO
-						</button>
-					</form>
-				</div>
-
-				<div class="footer__link">
-					<div class="footer__container">
-						<div class="footer__link-legals">
-							<a href="#CGV" aria-label="conditions générales de vente"
-								>Conditions générales de vente</a
-							>
-							<a href="#ML" aria-label="mentions légales">Mentions légales</a>
-						</div>
-						<div class="footer__link-social">
-							<a href="#facebook" aria-label="Facebook"
-								><span
-									class="fab fa-facebook-square fa-2x"
-									aria-hidden="true"
-								></span
-							></a>
-							<a href="#youtube" aria-label="Youtube"
-								><span class="fab fa-youtube" aria-hidden="true"></span
-							></a>
-							<a href="#twitter" aria-label="Twitter"
-								><span class="fab fa-twitter" aria-hidden="true"></span
-							></a>
-							<a href="#instagram" aria-label="Instagram"
-								><span class="fab fa-instagram-square" aria-hidden="true"></span
-							></a>
-						</div>
-					</div>
-				</div>
+		<footer id="footer" class="footer">
+			<div class="footer__links container">
+				<a href="#CGV" aria-label="conditions générales de vente"
+					>Conditions générales de vente</a
+				>
+				<a href="#ML" aria-label="mentions légales">Mentions légales</a>
 			</div>
 		</footer>
 		<script type="module" src="../js/product.js"></script>

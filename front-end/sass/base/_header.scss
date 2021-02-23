@@ -1,17 +1,37 @@
+/****** MEDIA QUIERIES ********
+600px :
+".teddy"
+".teddy img"
+".teddy__box"
+
+******************************/
+
 #header {
 	align-items: center;
 	background-color: $secondary-color;
 	display: flex;
 	flex-direction: row;
 	height: 70px;
+	@include md {
+		height: 150px;
+	}
+	background-color: red;
 }
 
 .header {
 	display: flex;
 	justify-content: space-between;
+	background-color: green;
+	width: 100%;
+	@include md {
+		flex-direction: column;
+	}
 	&__title {
 		align-items: baseline;
 		display: flex;
+		@include md {
+			margin-bottom: 15px;
+		}
 	}
 }
 
@@ -20,7 +40,11 @@
 		align-items: baseline;
 		display: flex;
 		& li {
-			margin-right: 25px;
+			margin-left: 25px;
+			@include md {
+				margin-left: 0;
+				margin-right: 25px;
+			}
 			&:hover {
 				transform: scale(1.2);
 			}

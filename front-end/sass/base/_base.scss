@@ -1,31 +1,47 @@
+/****** MEDIA QUIERIES ********
+
+375px : 
+".container"
+1024px :
+".container"
+
+******************************/
+
 body {
 	background-color: $secondary-color;
 	position: relative;
 }
 section {
-	padding: 50px 0;
+	padding: 25px 0;
 }
+
 #main {
 	background-color: white;
 }
 #main__container {
 	display: flex;
 	flex-direction: column;
-	min-height: 625px;
-	&.article-aside {
-		flex-direction: row;
-		margin-bottom: 15px;
-		justify-content: space-between;
-	}
 }
+
 .container {
 	display: flex;
 	flex-wrap: wrap;
 	margin: 0 auto;
-	width: 80%;
+	max-width: 1000px;
 	@include border-box;
+	@include xl {
+		margin: 0 50px;
+	}
+	@include sm {
+		margin: 0 25px;
+	}
 }
 
-.error-message {
-	display: none;
+.fa-chevron-left {
+	margin-right: 10px;
+}
+.homepage-return {
+	align-items: center;
+	display: flex;
+	padding-bottom: 25px;
 }

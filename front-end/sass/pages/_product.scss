@@ -1,7 +1,19 @@
+/****** MEDIA QUIERIES ********
+
+600px :
+".teddy"
+".teddy img"
+".teddy__box"
+
+******************************/
+
 .teddy {
 	display: flex;
-	margin: auto 0;
+	margin: 30px 0;
 	overflow: hidden;
+	@include md {
+		flex-direction: column;
+	}
 	& img {
 		height: auto;
 		margin-right: 20px;
@@ -9,23 +21,21 @@
 		overflow: hidden;
 		width: 50%;
 		@include radius15;
+		@include md {
+			max-height: 350px;
+			width: 100%;
+		}
 	}
 	&__box {
-		margin: 15px 0;
 		width: 50%;
 		@include border-box;
-
-		&__text {
-			&-description {
-				margin: 30px 0;
-			}
+		@include md {
+			width: 100%;
 		}
-		&__form {
-			width: 50%;
-			&-colors {
-				& #teddy__colors {
-					@include flex-CC;
-				}
+		&__text {
+			margin: 25px 0;
+			&-description {
+				margin: 10px 0;
 			}
 		}
 		& .btn {

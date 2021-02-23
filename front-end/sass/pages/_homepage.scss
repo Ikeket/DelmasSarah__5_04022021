@@ -4,13 +4,15 @@
 	justify-content: center;
 	&__box {
 		background-color: none;
-		margin: 20px;
 		height: 450px;
 		width: 450px;
 		transition: 500ms linear background-color;
 		@include border-box;
 		@include box-shadow;
 		@include radius15;
+		@include md {
+			width: 300px;
+		}
 		&:hover {
 			background-color: $secondary-color;
 			transform: scale(1.1);

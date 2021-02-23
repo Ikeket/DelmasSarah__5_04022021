@@ -23,8 +23,7 @@ fetch(`http://localhost:3000/api/teddies/`)
                             <p>En stock</p>
                             <div class="cart__box-text-quantity">
                                 <p>Quantité : ${teddyInCart.quantity}</p>
-								<span class="fas fa-plus"></span>
-								<span class="fas fa-minus"></span>
+								
                             </div>
                         </div>
                     <div  class="cart__box-price">Total : ${
@@ -47,6 +46,26 @@ fetch(`http://localhost:3000/api/teddies/`)
 		displayTotalCart.innerHTML += `Le total de votre panier s'élève à ${sum}€ `;
 		cartBox.append(displayTotalCart);
 	});
+
+let formUser = document.createElement("article");
+formUser.innerHTML += `<form method="POST" class="form" id="form-user">
+	<label for="firstame">Prénom</label>
+	<input name="firstname" type="text" id="firstname" />
+	<label for="lastname">Nom</label>
+	<input name="lastname" type="text" id="lastname" />
+	<label for="address">Adresse</label>
+	<input name="address" type="text" placeholder="n° et rue" id="adress" />
+	<input
+		name="address"
+		type="text"
+		placeholder="code postal et ville"
+		id="city"
+	/>
+	<label for="email">Email</label>
+	<input name="email" type="text" id="email" />
+	<button type="submit" name="Submit" id="form-button">Envoyer</button>
+</form>`;
+createContainer.append(formUser);
 
 let testButton = document.getElementById("form-button").addEventListener("click", function () {
 	event.preventDefault();
@@ -77,6 +96,3 @@ let testButton = document.getElementById("form-button").addEventListener("click"
 			window.alert(error);
 		});
 });
-let returnIndex = document.createElement("h2");
-returnIndex.innerHTML += `<a href="index.html"  class="container"><span class="fas fa-chevron-left"></span> Accueil</a>`;
-main.append(returnIndex);
