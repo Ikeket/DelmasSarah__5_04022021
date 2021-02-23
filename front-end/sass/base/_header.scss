@@ -1,11 +1,3 @@
-/****** MEDIA QUIERIES ********
-600px :
-".teddy"
-".teddy img"
-".teddy__box"
-
-******************************/
-
 #header {
 	align-items: center;
 	background-color: $secondary-color;
@@ -15,13 +7,11 @@
 	@include md {
 		height: 150px;
 	}
-	background-color: red;
 }
 
 .header {
 	display: flex;
 	justify-content: space-between;
-	background-color: green;
 	width: 100%;
 	@include md {
 		flex-direction: column;
@@ -51,3 +41,21 @@
 		}
 	}
 }
+/****** MEDIA QUIERIES ********/
+/* 600px */
+@include md {
+	#header {
+		height: 150px;
+	}
+	.header {
+		flex-direction: column;
+		&__title {
+			margin-bottom: 15px;
+		}
+	}
+	.navbar li {
+		margin-left: 0;
+		margin-right: 25px;
+	}
+}
+/******************************/

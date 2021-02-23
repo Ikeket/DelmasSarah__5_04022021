@@ -5,17 +5,18 @@
 	&__box {
 		background-color: none;
 		height: 450px;
-		width: 450px;
+		margin-bottom: 25px;
+		width: 48%;
 		transition: 500ms linear background-color;
+		&:nth-child(2n) {
+			margin-left: 25px;
+		}
 		@include border-box;
 		@include box-shadow;
 		@include radius15;
-		@include md {
-			width: 300px;
-		}
 		&:hover {
 			background-color: $secondary-color;
-			transform: scale(1.1);
+			transform: scale(1.05);
 			transition: 250ms linear background-color;
 		}
 		&__link {
@@ -25,7 +26,7 @@
 			@include flex-CC;
 		}
 		&__text {
-			height: 60px;
+			height: 40px;
 			width: 100%;
 			@include border-box;
 			@include flex-CC;
@@ -40,6 +41,19 @@
 			object-position: top;
 			height: 380px;
 			width: 100%;
+		}
+	}
+}
+
+@include lg {
+	.product__box {
+		height: 300px;
+		width: 100%;
+		&:nth-child(2n) {
+			margin-left: 0;
+		}
+		& img {
+			height: 250px;
 		}
 	}
 }
