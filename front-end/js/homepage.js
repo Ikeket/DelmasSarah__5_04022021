@@ -6,6 +6,10 @@ let productBox = document.createElement("article");
 productBox.className = "product";
 createContainer.appendChild(productBox);
 
+/*
+FR : création de l'ensemble des vues produits
+EN : création of all product views
+*/
 fetch(`http://localhost:3000/api/teddies`)
 	.then((response) => response.json())
 	.then((product) => {
@@ -24,3 +28,9 @@ fetch(`http://localhost:3000/api/teddies`)
 			productBox.appendChild(teddyBox);
 		});
 	});
+
+/*
+Améliorations / Improvement
+FR : implémenter la possibilité d'ajouter produit directement dans le panier depuis la homepage
+EN : implement the possibility of adding the product directly on cart from the homepage
+*/

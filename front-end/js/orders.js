@@ -1,7 +1,7 @@
 "use strict";
 
-import { cart, createContainer, sumBuying, userData } from "./utils.js";
-
+import { cart, createContainer, sumBuying, user } from "./utils.js";
+console.log(user);
 let orders = document.createElement("article");
 orders.className = "orders";
 orders.innerHTML += `<h1>Mes commandes</h1>`;
@@ -12,7 +12,7 @@ order.className = "orders__box text-center";
 order.innerHTML += `
     <div class="orders__box-order">N° de commande : XXXXXXXXXXXXxx</div>
     <div class="orders__box-date">Passée le : 31 Janvier 2021</div>
-    <div class="orders__box-adresse">Livrée à : ${userData.name}</br>${userData.address}</div>
+    <div class="orders__box-adresse">Livrée à : ${user.firstName} ${user.lastName}</br>${user.address}, ${user.city}</div>
     `;
 orders.appendChild(order);
 

@@ -48,17 +48,22 @@
 
 		<main id="main">
 			<section id="main__container" class="container cart__container">
-				<form method="post" class="form">
+				<form method="POST" class="form">
 					<label for="firstame">Prénom</label>
-					<input name="firstname" type="text" />
+					<input name="firstname" type="text" id="firstname" />
 					<label for="lastname">Nom</label>
-					<input name="lastname" type="text" />
+					<input name="lastname" type="text" id="lastname" />
 					<label for="address">Adresse</label>
-					<input name="address" type="text" placeholder="n° et rue" />
-					<input name="address" type="text" placeholder="code postal et ville" />
+					<input name="address" type="text" placeholder="n° et rue" id="adress" />
+					<input
+						name="address"
+						type="text"
+						placeholder="code postal et ville"
+						id="city"
+					/>
 					<label for="email">Email</label>
-					<input name="email" type="text" />
-					<button type="submit" name="Submit">Envoyer</button>
+					<input name="email" type="text" id="email" />
+					<button type="submit" name="Submit" id="form-button">Envoyer</button>
 				</form>
 			</section>
 		</main>

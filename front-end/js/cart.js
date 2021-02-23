@@ -48,6 +48,35 @@ fetch(`http://localhost:3000/api/teddies/`)
 		cartBox.append(displayTotalCart);
 	});
 
+let testButton = document.getElementById("form-button").addEventListener("click", function () {
+	event.preventDefault();
+	const contact = {
+		firstName: document.getElementById("firstname").value,
+		lastName: document.getElementById("lastname").value,
+		address: document.getElementById("adress").value,
+		city: document.getElementById("city").value,
+		email: document.getElementById("email").value,
+	};
+	alert(JSON.stringify(contact));
+
+	fetch("http://localhost:3000/api/teddies/order", {
+		method: "POST",
+		headers: {
+			"Content-Type": "application/json",
+		},
+		body: JSON.stringify({ contact }),
+	})
+		.then((response) => response.json())
+		.then((data) => {
+			console.log(data);
+			localStorage.setItem("order", JSON.stringify(contact));
+			console.log(localStorage);
+			document.location.href = "./orders.html";
+		})
+		.catch((error) => {
+			window.alert(error);
+		});
+});
 let returnIndex = document.createElement("h2");
 returnIndex.innerHTML += `<a href="index.html"  class="container"><span class="fas fa-chevron-left"></span> Accueil</a>`;
 main.append(returnIndex);
