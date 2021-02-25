@@ -7,7 +7,6 @@ console.log(orderJSON);
 
 let orders = document.createElement("article");
 orders.className = "orders";
-orders.innerHTML += `<h1>Mes commandes</h1>`;
 createContainer.appendChild(orders);
 
 let order = document.createElement("div");

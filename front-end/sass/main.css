@@ -2,11 +2,6 @@ body {
   background-color: #ffefd1;
 }
 
-body,
-html {
-  height: 100%;
-}
-
 h2 {
   padding-top: 50px;
 }
@@ -17,8 +12,6 @@ section {
 
 #main {
   background-color: white;
-  min-height: 100%;
-  position: relative;
 }
 
 #main__container {
@@ -81,11 +74,6 @@ section {
 
 .footer__links a {
   margin-bottom: 10px;
-}
-
-.footer__not-homepage {
-  position: absolute;
-  bottom: 0;
 }
 
 #header {
@@ -334,22 +322,6 @@ select {
   width: 80%;
 }
 
-.cart__box-text-quantity {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-flex: row;
-      -ms-flex: row;
-          flex: row;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-}
-
-.cart__box-text-quantity span {
-  margin-left: 10px;
-}
-
 .cart__box-price {
   text-align: right;
   padding-right: 20px;
@@ -371,37 +343,37 @@ select {
   padding-top: 10px;
 }
 
-.input {
-  width: 100%;
-}
-
-.input input {
+.form input {
   border: none;
   background-color: #ffefd1;
+  margin-bottom: 10px;
+  margin-top: 5px;
   -webkit-box-shadow: 0px 0px 12px 2px rgba(212, 211, 211, 0.308);
           box-shadow: 0px 0px 12px 2px rgba(212, 211, 211, 0.308);
 }
 
-.input input,
-.input label {
+.form input,
+.form label {
   height: 30px;
-  margin-right: 15px;
   border-radius: 15px;
 }
 
-.input-box {
+.form-box {
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  margin-bottom: 15px;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
-  margin-bottom: 15px;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
-.input button {
+.form button {
   margin-top: 15px;
   width: 150px;
 }
@@ -544,24 +516,6 @@ select {
   display: flex;
 }
 
-/****** MEDIA QUIERIES ********/
-@media (max-width: 600px) {
-  .teddy {
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
-  }
-  img {
-    max-height: 350px;
-    width: 100%;
-  }
-  __box {
-    width: 100%;
-  }
-}
-
-/******************************/
 .teddy {
   -webkit-box-align: center;
       -ms-flex-align: center;
@@ -629,4 +583,23 @@ select {
   width: -moz-fit-content;
   width: fit-content;
 }
+
+/****** MEDIA QUIERIES ********/
+@media (max-width: 600px) {
+  .teddy {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+  img {
+    max-height: 350px;
+    width: 100%;
+  }
+  __box {
+    width: 100%;
+  }
+}
+
+/******************************/
 /*# sourceMappingURL=main.css.map */

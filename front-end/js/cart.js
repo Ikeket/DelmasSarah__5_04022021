@@ -18,15 +18,11 @@ fetch(`http://localhost:3000/api/teddies/`)
 					}" class="cart__box__teddy-picture" alt="Produit : ${
 				teddyInCart.name
 			}" width="150" />
-                        <div class="cart__box-text">
-                            <h3>${teddyInCart.name}</h3>
-                            <p>En stock</p>
-                            <div class="cart__box-text-quantity">
-                                <p>Quantité : ${teddyInCart.quantity}</p>
-								
-                            </div>
-                        </div>
-                    <div  class="cart__box-price">Total : ${
+                    <div class="cart__box-text">
+                        <p><strong>${teddyInCart.name}</strong></p>
+                        <p>x ${teddyInCart.quantity}</p>
+                    </div>
+                    <div  class="cart__box-price">${
 						teddyInCart.price * teddyInCart.quantity
 					}€</div>`;
 			cartBox.appendChild(displayCart);
@@ -50,33 +46,27 @@ fetch(`http://localhost:3000/api/teddies/`)
 let formUser = document.createElement("article");
 formUser.innerHTML += `<h3>Vos coordonnées</h3>
 <form method="POST" class="form" id="form-user">
-	<div class="input">
-		<div class="input-box">
-			<label for="firstame">Prénom</label>
-			<input name="firstname" type="text" id="firstname" />
-			<label for="lastname">Nom</label>
-			<input name="lastname" type="text" id="lastname" />
-			
-		</div>
-		<div class="input-box">
-			<label for="address">Adresse</label>
-			<input name="address" type="text" placeholder="n° et rue" id="adress" />
-			<input
-				name="address"
-				type="text"
-				placeholder="code postal et ville"
-				id="city"
-			/>
-		</div><label for="email">Email</label>
-		<input name="email" type="text" id="email" />
-		
-	<div>
+		<label for="firstame">Prénom</label><br>
+		<input name="firstname" type="text" id="firstname" /><br>
+		<label for="lastname">Nom</label><br>
+		<input name="lastname" type="text" id="lastname" /><br>
+		<label for="address">Adresse</label><br>
+		<input name="address" type="text" placeholder="n° et rue" id="adress" /><br>
+		<input
+			name="address"
+			type="text"
+			placeholder="code postal et ville"
+			id="city"
+		/><br>
+		<label for="email">Email</label><br>
+		<input name="email" type="text" id="email" /><br>
 	<button type="submit" name="Submit" id="form-button">Envoyer</button>
 </form>`;
 createContainer.append(formUser);
 
-let testButton = document.getElementById("form-button").addEventListener("click", function () {
+let sendOrder = document.getElementById("form-button").addEventListener("click", function () {
 	event.preventDefault();
+
 	const contact = {
 		firstName: document.getElementById("firstname").value,
 		lastName: document.getElementById("lastname").value,
@@ -88,7 +78,6 @@ let testButton = document.getElementById("form-button").addEventListener("click"
 	for (let i = 0; i < cart.length; i++) {
 		products.push(cart[i]._id);
 	}
-	alert(products);
 
 	fetch("http://localhost:3000/api/teddies/order", {
 		method: "POST",
@@ -99,8 +88,8 @@ let testButton = document.getElementById("form-button").addEventListener("click"
 	})
 		.then((response) => response.json())
 		.then((userData) => {
-			alert("data" + JSON.stringify(userData));
 			localStorage.setItem("order", JSON.stringify(userData));
+			alert(`Votre commande a été passée avec succès !`);
 			document.location.href = "./orders.html";
 		})
 		.catch((error) => {

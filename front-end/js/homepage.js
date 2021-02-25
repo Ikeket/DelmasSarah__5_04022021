@@ -1,19 +1,13 @@
 "use strict";
-/*
-FR : création de l'ensemble des vues produits
-EN : création of all product views
-*/
-
 import { createContainer } from "./utils.js";
-
-let productBox = document.createElement("article");
-productBox.className = "product";
-createContainer.appendChild(productBox);
 
 try {
 	fetch(`http://localhost:3000/api/teddies`)
 		.then((response) => response.json())
 		.then((product) => {
+			let productBox = document.createElement("article");
+			productBox.className = "product";
+			createContainer.appendChild(productBox);
 			let teddies = product;
 			teddies.forEach((teddy) => {
 				let teddyBox = document.createElement("div"); // créé la box qui contient chaque teddy
@@ -30,7 +24,7 @@ try {
 			});
 		});
 } catch (error) {
-	console.error("erreur : " + error);
+	console.error(error);
 }
 
 /*

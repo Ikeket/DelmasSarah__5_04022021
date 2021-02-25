@@ -6,7 +6,6 @@ try {
 	fetch(`http://localhost:3000/api/teddies/${productId}`)
 		.then((response) => response.json())
 		.then(function (teddy) {
-			// affiche le teddy
 			let teddyProduct = document.createElement("article");
 			teddyProduct.className = "teddy";
 			teddyProduct.innerHTML += `<img src="${teddy.imageUrl}" class="teddy__picture" alt="Produit : ${teddy.name}" width="900">`;
@@ -22,10 +21,11 @@ try {
 	</div>
 	<div class="teddy__box__input">
 		<select name="colors" id="teddy__colors"></select>
+		<button class="add-to-cart btn buy-btn text-center" type="button">Craquer pour ${
+			teddy.name
+		}</button>
 	</div>
-	<button class="add-to-cart btn buy-btn text-center" type="button">Craquer pour ${
-		teddy.name
-	}</button>`;
+	`;
 			teddyProduct.appendChild(teddyBox);
 			let teddyColors = document.getElementById("teddy__colors");
 			teddy.colors.forEach(function (product_color) {
