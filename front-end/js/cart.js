@@ -48,21 +48,29 @@ fetch(`http://localhost:3000/api/teddies/`)
 	});
 
 let formUser = document.createElement("article");
-formUser.innerHTML += `<form method="POST" class="form" id="form-user">
-	<label for="firstame">Prénom</label>
-	<input name="firstname" type="text" id="firstname" />
-	<label for="lastname">Nom</label>
-	<input name="lastname" type="text" id="lastname" />
-	<label for="address">Adresse</label>
-	<input name="address" type="text" placeholder="n° et rue" id="adress" />
-	<input
-		name="address"
-		type="text"
-		placeholder="code postal et ville"
-		id="city"
-	/>
-	<label for="email">Email</label>
-	<input name="email" type="text" id="email" />
+formUser.innerHTML += `<h3>Vos coordonnées</h3>
+<form method="POST" class="form" id="form-user">
+	<div class="input">
+		<div class="input-box">
+			<label for="firstame">Prénom</label>
+			<input name="firstname" type="text" id="firstname" />
+			<label for="lastname">Nom</label>
+			<input name="lastname" type="text" id="lastname" />
+			
+		</div>
+		<div class="input-box">
+			<label for="address">Adresse</label>
+			<input name="address" type="text" placeholder="n° et rue" id="adress" />
+			<input
+				name="address"
+				type="text"
+				placeholder="code postal et ville"
+				id="city"
+			/>
+		</div><label for="email">Email</label>
+		<input name="email" type="text" id="email" />
+		
+	<div>
 	<button type="submit" name="Submit" id="form-button">Envoyer</button>
 </form>`;
 createContainer.append(formUser);
@@ -76,20 +84,23 @@ let testButton = document.getElementById("form-button").addEventListener("click"
 		city: document.getElementById("city").value,
 		email: document.getElementById("email").value,
 	};
-	alert(JSON.stringify(contact));
+	let products = [];
+	for (let i = 0; i < cart.length; i++) {
+		products.push(cart[i]._id);
+	}
+	alert(products);
 
 	fetch("http://localhost:3000/api/teddies/order", {
 		method: "POST",
 		headers: {
 			"Content-Type": "application/json",
 		},
-		body: JSON.stringify({ contact }),
+		body: JSON.stringify({ contact, products }),
 	})
 		.then((response) => response.json())
-		.then((data) => {
-			console.log(data);
-			localStorage.setItem("order", JSON.stringify(contact));
-			console.log(localStorage);
+		.then((userData) => {
+			alert("data" + JSON.stringify(userData));
+			localStorage.setItem("order", JSON.stringify(userData));
 			document.location.href = "./orders.html";
 		})
 		.catch((error) => {

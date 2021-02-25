@@ -1,23 +1,34 @@
-/****** MEDIA QUIERIES ********
+/****** MEDIA QUIERIES ********/
 
-600px :
-".teddy"
-".teddy img"
-".teddy__box"
+@include md {
+	.teddy {
+		flex-direction: column;
+	}
+	& img {
+		max-height: 350px;
+		width: 100%;
+	}
+	&__box {
+		width: 100%;
+	}
+}
 
-******************************/
+/******************************/
 
 .teddy {
+	align-items: center;
 	display: flex;
+	min-height: 500px;
 	margin: 30px 0;
 	overflow: hidden;
 	@include md {
 		flex-direction: column;
 	}
 	& img {
-		height: auto;
+		height: 500px;
 		margin-right: 20px;
 		object-fit: cover;
+		object-position: center bottom;
 		overflow: hidden;
 		width: 50%;
 		@include radius15;

@@ -1,10 +1,14 @@
 body {
   background-color: #ffefd1;
-  position: relative;
+}
+
+body,
+html {
+  height: 100%;
 }
 
 h2 {
-  padding-top: 25px;
+  padding-top: 50px;
 }
 
 section {
@@ -13,6 +17,8 @@ section {
 
 #main {
   background-color: white;
+  min-height: 100%;
+  position: relative;
 }
 
 #main__container {
@@ -39,16 +45,6 @@ section {
 
 .fa-chevron-left {
   margin-right: 10px;
-}
-
-.homepage-return {
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  padding-bottom: 25px;
 }
 
 /****** MEDIA QUIERIES ********/
@@ -85,6 +81,11 @@ section {
 
 .footer__links a {
   margin-bottom: 10px;
+}
+
+.footer__not-homepage {
+  position: absolute;
+  bottom: 0;
 }
 
 #header {
@@ -293,7 +294,8 @@ select {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  margin-bottom: 50px;
+  margin-bottom: 25px;
+  width: 100%;
 }
 
 .cart__price {
@@ -312,14 +314,18 @@ select {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  padding: 15px 0;
+  padding: 5px 0;
   display: flex;
   -ms-flex-direction: row;
       flex-direction: row;
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  width: 100%;
+}
+
+.cart__box img {
+  width: 150px;
+  border-radius: 15px;
 }
 
 .cart__box-text {
@@ -358,39 +364,46 @@ select {
 }
 
 .form {
-  border: #8d5617 solid 1px;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  margin: 10px auto;
-  padding: 25px;
-  width: 250px;
+  padding-top: 10px;
+}
+
+.input {
+  width: 100%;
+}
+
+.input input {
+  border: none;
+  background-color: #ffefd1;
+  -webkit-box-shadow: 0px 0px 12px 2px rgba(212, 211, 211, 0.308);
+          box-shadow: 0px 0px 12px 2px rgba(212, 211, 211, 0.308);
+}
+
+.input input,
+.input label {
+  height: 30px;
+  margin-right: 15px;
+  border-radius: 15px;
+}
+
+.input-box {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-shadow: 0px 0px 12px 2px rgba(212, 211, 211, 0.308);
-          box-shadow: 0px 0px 12px 2px rgba(212, 211, 211, 0.308);
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  margin-bottom: 15px;
 }
 
-.form label {
-  margin-top: 20px;
-  margin-bottom: 10px;
-}
-
-.form input {
-  margin-bottom: 5px;
-  width: 100%;
-}
-
-.form button {
-  margin-top: 25px;
+.input button {
+  margin-top: 15px;
+  width: 150px;
 }
 
 .product {
@@ -399,6 +412,7 @@ select {
   display: flex;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
+  min-height: 1200px;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
@@ -530,18 +544,32 @@ select {
   display: flex;
 }
 
-/****** MEDIA QUIERIES ********
+/****** MEDIA QUIERIES ********/
+@media (max-width: 600px) {
+  .teddy {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+  img {
+    max-height: 350px;
+    width: 100%;
+  }
+  __box {
+    width: 100%;
+  }
+}
 
-600px :
-".teddy"
-".teddy img"
-".teddy__box"
-
-******************************/
+/******************************/
 .teddy {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  min-height: 500px;
   margin: 30px 0;
   overflow: hidden;
 }
@@ -556,10 +584,12 @@ select {
 }
 
 .teddy img {
-  height: auto;
+  height: 500px;
   margin-right: 20px;
   -o-object-fit: cover;
      object-fit: cover;
+  -o-object-position: center bottom;
+     object-position: center bottom;
   overflow: hidden;
   width: 50%;
   border-radius: 15px;

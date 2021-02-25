@@ -9,7 +9,6 @@
 			href="https://cdn.jsdelivr.net/gh/jgthms/minireset.css@master/minireset.min.css"
 		/>
 		<link rel="stylesheet" href="../sass/main.css" />
-		<!-- <link rel="stylesheet" href="../css/main.css" /> -->
 		<script src="https://kit.fontawesome.com/022660c1b2.js" crossorigin="anonymous"></script>
 
 		<meta
@@ -17,85 +16,51 @@
 			content="Orinours, des oursons tout mignons faits à la main avec amour"
 		/>
 
-		<title></title>
+		<title>Orinours, des oursons tout mignons</title>
 	</head>
 
 	<body>
-		<header id="header">
-			<div class="header container">
-				<div class="header__title">
-					<h1>Orinours</h1>
-					<span class="fas fa-paw" aria-hidden="true"></span>
-				</div>
-
-				<nav class="header__navbar navbar">
-					<ul class="navbar__link">
-						<li><a href="./orders.html" aria-label="commandes">Mes commandes</a></li>
-						<li>
-							<a href="./cart.html" aria-label="panier">
-								<i class="fas fa-shopping-cart"></i>
-								<span class="cart-number"></span>
-							</a>
-						</li>
-						<li>
-							<a href="#account" aria-label="compte"
-								><i class="fas fa-user-circle"></i
-							></a>
-						</li>
-					</ul>
-				</nav>
-			</div>
-		</header>
-
 		<main id="main">
-			<h1 class="container">Mon panier</h1>
-			<section id="main__container" class="container cart__container"></section>
+			<header id="header">
+				<div class="header container">
+					<div class="header__title">
+						<h1>Orinours</h1>
+						<span class="fas fa-paw" aria-hidden="true"></span>
+					</div>
 
-			<a href="index.html" class="homepage-return container"
-				><span class="fas fa-chevron-left fa-sm"></span> Accueil</a
-			>
+					<nav class="header__navbar navbar">
+						<ul class="navbar__link">
+							<li>
+								<a href="./cart.html" aria-label="panier">
+									<i class="fas fa-shopping-cart"></i>
+									<span class="cart-number"></span>
+								</a>
+							</li>
+							<li>
+								<a href="#account" aria-label="compte">
+									<i class="fas fa-user-circle"></i>
+									<span class="cart-number"></span>
+								</a>
+							</li>
+						</ul>
+					</nav>
+				</div>
+			</header>
+
+			<h2 class="container">Mon panier</h2>
+			<section id="main__container" class="container"></section>
+
+			<footer id="footer" class="footer">
+				<div class="footer__links container">
+					<a href="index.html" class="homepage-return">Retour à l'accueil</a>
+					<a href="#CGV" aria-label="conditions générales de vente"
+						>Conditions générales de vente</a
+					>
+					<a href="#ML" aria-label="mentions légales">Mentions légales</a>
+				</div>
+			</footer>
 		</main>
 
-		<footer id="footer">
-			<div class="footer container">
-				<div class="footer__newsletter text-center">
-					<span class="far fa-envelope-open" aria-hidden="true"></span>
-					<label for="newsletter">Abonnez-vous à notre newsletter</label>
-					<form class="footer__newsletter-input text-center">
-						<input type="email" id="newsletter" name="newsletter" />
-						<button type="submit" name="email" form="newsletter">GO</button>
-					</form>
-				</div>
-
-				<div class="footer__link">
-					<div class="footer__container">
-						<div class="footer__link-legals">
-							<a href="#CGV" aria-label="conditions générales de vente"
-								>Conditions générales de vente</a
-							>
-							<a href="#ML" aria-label="mentions légales">Mentions légales</a>
-						</div>
-						<div class="footer__link-social">
-							<a href="#facebook" aria-label="Facebook"
-								><span
-									class="fab fa-facebook-square fa-2x"
-									aria-hidden="true"
-								></span
-							></a>
-							<a href="#youtube" aria-label="Youtube"
-								><span class="fab fa-youtube" aria-hidden="true"></span
-							></a>
-							<a href="#twitter" aria-label="Twitter"
-								><span class="fab fa-twitter" aria-hidden="true"></span
-							></a>
-							<a href="#instagram" aria-label="Instagram"
-								><span class="fab fa-instagram-square" aria-hidden="true"></span
-							></a>
-						</div>
-					</div>
-				</div>
-			</div>
-		</footer>
 		<script type="module" src="../js/cart.js"></script>
 	</body>
 </html>

@@ -1,7 +1,8 @@
 .cart {
 	display: flex;
 	flex-direction: column;
-	margin-bottom: 50px;
+	margin-bottom: 25px;
+	width: 100%;
 
 	&__price {
 		border-bottom: 2px solid $primary-color;
@@ -14,12 +15,14 @@
 		border-bottom: 1px solid $primary-color;
 		display: flex;
 		flex-direction: column;
-		padding: 15px 0;
-
+		padding: 5px 0;
 		display: flex;
 		flex-direction: row;
 		justify-content: space-between;
-		width: 100%;
+		& img {
+			width: 150px;
+			@include radius15;
+		}
 		&-text {
 			padding-left: 20px;
 			padding-top: 20px;
@@ -40,6 +43,7 @@
 			min-width: 200px;
 		}
 	}
+
 	&__total {
 		border-top: $primary-color 1px solid;
 		text-align: right;
@@ -49,22 +53,32 @@
 }
 
 .form {
-	border: $primary-color solid 1px;
 	flex-direction: column;
-	margin: 10px auto;
-	padding: 25px;
-	width: 250px;
-	@include flex-CC;
-	@include box-shadow;
-	& label {
-		margin-top: 20px;
-		margin-bottom: 10px;
-	}
+	padding-top: 10px;
+}
+
+.input {
+	width: 100%;
+
 	& input {
-		margin-bottom: 5px;
-		width: 100%;
+		border: none;
+		background-color: $secondary-color;
+		@include box-shadow;
+	}
+	& input,
+	& label {
+		height: 30px;
+		margin-right: 15px;
+		@include radius15;
+	}
+	&-box {
+		align-items: center;
+		display: flex;
+		flex-wrap: wrap;
+		margin-bottom: 15px;
 	}
 	& button {
-		margin-top: 25px;
+		margin-top: 15px;
+		width: 150px;
 	}
 }

@@ -1,9 +1,12 @@
 body {
 	background-color: $secondary-color;
-	position: relative;
+}
+body,
+html {
+	height: 100%;
 }
 h2 {
-	padding-top: 25px;
+	padding-top: 50px;
 }
 section {
 	padding: 25px 0;
@@ -11,6 +14,8 @@ section {
 
 #main {
 	background-color: white;
+	min-height: 100%;
+	position: relative;
 	&__container {
 		display: flex;
 		flex-direction: column;
@@ -27,11 +32,6 @@ section {
 
 .fa-chevron-left {
 	margin-right: 10px;
-}
-.homepage-return {
-	align-items: center;
-	display: flex;
-	padding-bottom: 25px;
 }
 
 /****** MEDIA QUIERIES ********/
