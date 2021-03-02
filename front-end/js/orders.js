@@ -13,11 +13,11 @@ let order = document.createElement("div");
 order.className = "orders__box text-center";
 order.innerHTML += `
     <div class="orders__box-order">N° de commande : ${orderJSON.orderId}</div>
-    <div class="orders__box-date">Passée le : 31 Janvier 2021</div>
+    <div class="orders__box-date">Passée le : 31 Janvier 2021</div> 
     <div class="orders__box-adresse">Livrée chez ${orderJSON.contact.firstName} ${orderJSON.contact.lastName} au ${orderJSON.contact.address} à  ${orderJSON.contact.city}</div>
     <div class="orders__box-email">Email de contact : ${orderJSON.contact.email}</div>
     `;
-orders.appendChild(order);
+orders.appendChild(order); // changer la date pour mettre celle du jour
 
 cart.forEach((teddy) => {
 	let affichertruc = document.createElement("div");

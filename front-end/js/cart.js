@@ -6,7 +6,7 @@ cartBox.className = "cart";
 cartBox.innerHTML += `<div class="cart__price price">Prix</div>`;
 createContainer.prepend(cartBox);
 
-fetch(`http://localhost:3000/api/teddies/`)
+fetch(`http://localhost:3000/api/teddies/`) //fetch inutile
 	.then((response) => response.json())
 	.then(function (teddy) {
 		JSON.parse(localStorage.getItem("teddy")).forEach((teddyInCart) => {
@@ -64,7 +64,7 @@ formUser.innerHTML += `<h3>Vos coordonnées</h3>
 </form>`;
 createContainer.append(formUser);
 
-let sendOrder = document.getElementById("form-button").addEventListener("click", function () {
+document.getElementById("form-button").addEventListener("click", function (event) {
 	event.preventDefault();
 
 	const contact = {
@@ -76,7 +76,7 @@ let sendOrder = document.getElementById("form-button").addEventListener("click",
 	};
 	let products = [];
 	for (let i = 0; i < cart.length; i++) {
-		products.push(cart[i]._id);
+		products.push(cart[i]._id); // ajouter une boucle sur la quantité
 	}
 
 	fetch("http://localhost:3000/api/teddies/order", {

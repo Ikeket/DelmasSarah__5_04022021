@@ -4,7 +4,7 @@ import { createContainer } from "./utils.js";
 try {
 	fetch(`http://localhost:3000/api/teddies`)
 		.then((response) => response.json())
-		.then((product) => {
+		.then((product) => { // changer le product
 			let productBox = document.createElement("article");
 			productBox.className = "product";
 			createContainer.appendChild(productBox);

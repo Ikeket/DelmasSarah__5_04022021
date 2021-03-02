@@ -48,12 +48,12 @@ try {
 
 			let addToCart = document.querySelector(".add-to-cart");
 			addToCart.addEventListener("click", () => {
-				window.location.reload();
+				window.location.reload(); // rappeler fonction relaod cart
 				let teddyAdded = document.createElement("div");
 				alert(`${teddy.name} a bien été ajouté à votre panier`);
 				teddyBox.append(teddyAdded);
 
-				if (localStorage.length === 0) {
+				if (localStorage.length === 0) { // modifier pour le cart //pas nécessairement utile, mais à réfléchir
 					cart.push(teddyObject);
 					localStorage.setItem("teddy", JSON.stringify(cart));
 				} else {
@@ -61,7 +61,7 @@ try {
 						if (teddyObject.name === cart[i].name) {
 							cart[i].quantity += 1;
 							localStorage.setItem("teddy", JSON.stringify(cart));
-							return;
+							return; // à modifier pour le rendre plus propre (ôter le return, opter pour un bool)
 						}
 					}
 					cart.push(teddyObject);
