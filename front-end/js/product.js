@@ -1,18 +1,17 @@
 "use strict";
-
 import { productId, cart, createContainer } from "./utils.js";
+if (productId !== "") {
+	fetch(`http://localhost:3000/api/teddies/${productId}`)
+		.then((response) => response.json())
+		.then(function (teddy) {
+			let teddyProduct = document.createElement("article");
+			teddyProduct.className = "teddy";
+			teddyProduct.innerHTML += `<img src="${teddy.imageUrl}" class="teddy__picture" alt="Produit : ${teddy.name}" width="900">`;
+			createContainer.prepend(teddyProduct);
 
-fetch(`http://localhost:3000/api/teddies/${productId}`)
-	.then((response) => response.json())
-	.then(function (teddy) {
-		let teddyProduct = document.createElement("article");
-		teddyProduct.className = "teddy";
-		teddyProduct.innerHTML += `<img src="${teddy.imageUrl}" class="teddy__picture" alt="Produit : ${teddy.name}" width="900">`;
-		createContainer.prepend(teddyProduct);
-
-		let teddyBox = document.createElement("div");
-		teddyBox.className = "teddy__box";
-		teddyBox.innerHTML += `
+			let teddyBox = document.createElement("div");
+			teddyBox.className = "teddy__box";
+			teddyBox.innerHTML += `
 	<div class="teddy__box__text">
 		<h3 class="teddy__box__text-name">${teddy.name}</h3>
 		<p class="teddy__box__text-price">Prix : ${teddy.price / 100}€</p>
@@ -25,48 +24,52 @@ fetch(`http://localhost:3000/api/teddies/${productId}`)
 		}</button>
 	</div>
 	`;
-		teddyProduct.appendChild(teddyBox);
-		let teddyColors = document.getElementById("teddy__colors");
-		teddy.colors.forEach(function (product_color) {
-			teddyColors.innerHTML += `<option value="${product_color}">${product_color}</option>`;
-		});
-		let dynamicTitle = document.querySelector("title");
-		dynamicTitle.textContent = `Orinours, découvrez ${teddy.name}`;
+			teddyProduct.appendChild(teddyBox);
+			let teddyColors = document.getElementById("teddy__colors");
+			teddy.colors.forEach(function (product_color) {
+				teddyColors.innerHTML += `<option value="${product_color}">${product_color}</option>`;
+			});
+			let dynamicTitle = document.querySelector("title");
+			dynamicTitle.textContent = `Orinours, découvrez ${teddy.name}`;
 
-		// *************** création et gestion du local storage *************** //
+			/*
+			FR : création et gestion du localStorage
+			EN : creation and management of localStorage
+			*/
+			let teddyObject = {
+				name: teddy.name,
+				quantity: 1,
+				imageUrl: teddy.imageUrl,
+				description: teddy.description,
+				price: teddy.price / 100,
+				_id: teddy._id,
+				color: teddyColors.value,
+			};
 
-		let teddyObject = {
-			name: teddy.name,
-			quantity: 1,
-			imageUrl: teddy.imageUrl,
-			description: teddy.description,
-			price: teddy.price / 100,
-			_id: teddy._id,
-			color: teddyColors.value,
-		};
+			let addToCart = document.querySelector(".add-to-cart");
+			addToCart.addEventListener("click", () => {
+				window.location.reload(); // rappeler fonction relaod cart
+				let teddyAdded = document.createElement("div");
+				alert(`${teddy.name} a bien été ajouté à votre panier`);
+				teddyBox.append(teddyAdded);
 
-		let addToCart = document.querySelector(".add-to-cart");
-		addToCart.addEventListener("click", () => {
-			window.location.reload(); // rappeler fonction relaod cart
-			let teddyAdded = document.createElement("div");
-			alert(`${teddy.name} a bien été ajouté à votre panier`);
-			teddyBox.append(teddyAdded);
-
-			if (localStorage.length === 0) {
-				// modifier pour le cart //pas nécessairement utile, mais à réfléchir
-				cart.push(teddyObject);
-				localStorage.setItem("teddy", JSON.stringify(cart));
-			} else {
-				for (let i = 0; i < cart.length; i++) {
-					if (teddyObject.name === cart[i].name) {
-						cart[i].quantity += 1;
-						localStorage.setItem("teddy", JSON.stringify(cart));
-						return; // à modifier pour le rendre plus propre (ôter le return, opter pour un bool)
+				if (cart.length === 0) {
+					cart.push(teddyObject);
+					localStorage.setItem("teddy", JSON.stringify(cart));
+				} else {
+					for (let i = 0; i < cart.length; i++) {
+						if (teddyObject.name === cart[i].name) {
+							cart[i].quantity += 1;
+							localStorage.setItem("teddy", JSON.stringify(cart));
+							return;
+						}
 					}
+					cart.push(teddyObject);
+					localStorage.setItem("teddy", JSON.stringify(cart));
 				}
-				cart.push(teddyObject);
-				localStorage.setItem("teddy", JSON.stringify(cart));
-			}
-		});
-	})
-	.catch((error) => console.error("erreur : " + error));
+			});
+		})
+		.catch((error) => console.error("erreur : " + error));
+} else {
+	alert(`Il n'y a aucun ourson à cette adresse. Retournez à l'accueil.`);
+}

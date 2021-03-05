@@ -216,6 +216,10 @@ h3,
   font-size: 25px;
 }
 
+h4 {
+  font-weight: bold;
+}
+
 label,
 button,
 .name,
