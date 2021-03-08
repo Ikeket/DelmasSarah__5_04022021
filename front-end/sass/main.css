@@ -399,7 +399,7 @@ select {
 }
 
 .product__box {
-  background-color: none;
+  background-color: transparent;
   height: 450px;
   margin-bottom: 25px;
   width: 48%;
@@ -592,7 +592,6 @@ select {
   width: fit-content;
 }
 
-/****** MEDIA QUIERIES ********/
 @media (max-width: 600px) {
   .teddy {
     -webkit-box-orient: vertical;
@@ -608,6 +607,4 @@ select {
     width: 100%;
   }
 }
-
-/******************************/
 /*# sourceMappingURL=main.css.map */
