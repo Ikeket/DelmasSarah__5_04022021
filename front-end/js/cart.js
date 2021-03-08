@@ -1,110 +1,93 @@
 "use strict";
-import { cart, createContainer } from "./utils.js";
+import { cart, createContainer, otherError } from "./utils.js";
 
+// FR : vérifie ce qu'il y a dans le panier pour afficher le contenu du panier ou un message d'erreur à l'utilisateur
+// EN : checks what is in the cart to display the contents of the cart or an error message to the user
 if (cart.length === 0) {
 	let emptyCart = document.createElement("div");
 	emptyCart.className = "container";
 	emptyCart.innerHTML += `Votre panier est vide, et si vous craquiez pour l'un de nos oursons ?`;
 	createContainer.append(emptyCart);
-	/*
-	Améliorations / Improvement
-	FR : ajouter les visuels de produit phares afin d'inciter le client à en acheter
-	EN : add featured product visuals to encourage customers to buy them
-	*/
 } else {
 	let cartBox = document.createElement("article");
 	cartBox.className = "cart";
 	cartBox.innerHTML += `<div class="cart__price price">Prix</div>`;
 	createContainer.prepend(cartBox);
 
+	// FR : créé les boîtes qui afficheront tous les éléments contenus dans le panier avec leur quantité et le prix total
+	// EN : created the boxes that will display all the items contained in the cart with their quantity and the total price
 	cart.forEach((teddy) => {
 		let displayCart = document.createElement("div");
 		displayCart.className = "cart__box";
 		displayCart.innerHTML += `
-            <img src="${teddy.imageUrl}" class="cart__box__teddy-picture" alt="Produit : ${
-			teddy.name
-		}" width="150" />
-                    <div class="cart__box-text">
-                        <p><strong>${teddy.name}</strong></p>
-                        <p>x ${teddy.quantity}</p>
-                    </div>
-                    <div  class="cart__box-price">${teddy.price * teddy.quantity}€</div>`;
-		cartBox.appendChild(displayCart);
-		console.log(teddy._id + "    " + teddy.quantity);
+            <img 
+			src="${teddy.imageUrl}" 
+			class="cart__box__teddy-picture" 
+			alt="Produit : ${teddy.name}"
+			width="150" />
+            <div class="cart__box-text">
+                <p><strong>${teddy.name}</strong></p>
+                <p>x ${teddy.quantity}</p>
+            </div>
+            <div  class="cart__box-price">${teddy.price * teddy.quantity}€</div>`;
+		cartBox.append(displayCart);
 	});
-	/*
-	Améliorations / Improvement
-	FR : mettre en place la possibilité de modifier la quantité de produits achetés et de supprimer l'ensemble du panier
-	EN : set up the possibility of modifying the quantity of products purchased and deleting the entire cart
-	*/
 
-	let sum = 0;
-	for (let y = 0; y < cart.length; y++) {
-		let price = Number(cart[y].price);
-		let quantity = Number(cart[y].quantity);
+	// FR : permet de calculer le total du panier et l'envoie dans le localStorage
+	// EN : allows to calculate cart's total and sends it to the localStorage
+	let total = 0;
+	for (let i = 0; i < cart.length; i++) {
+		let price = Number(cart[i].price);
+		let quantity = Number(cart[i].quantity);
 		let sumTeddy = price * quantity;
-		sum += sumTeddy;
-		localStorage.setItem("prices", JSON.stringify(sum));
+		total += sumTeddy;
+		localStorage.setItem("total", JSON.stringify(total));
 	}
-
 	let displayTotalCart = document.createElement("div");
 	displayTotalCart.className = "cart__total";
-	displayTotalCart.innerHTML += `Le total de votre panier s'élève à ${sum}€ `;
+	displayTotalCart.innerHTML += `Le total de votre panier s'élève à ${total}€ `;
 	cartBox.append(displayTotalCart);
-	let formUser = document.createElement("article");
-	formUser.innerHTML += `<h3>Vos coordonnées</h3>
-	<form method="POST" class="form" id="form-user">
-			<label for="firstame">Prénom</label><br>
-			<input name="firstname" type="text" id="firstname" required/><br>
-			<label for="lastname">Nom</label><br>
-			<input name="lastname" type="text" id="lastname" /><br>
-			<label for="address">Adresse</label><br>
-			<input 
-				name="address" 
-				type="text" 
-				placeholder="n° et rue" 
-				id="adress" 
-			/><br>
-			<input
-				name="address"
-				type="text"
-				placeholder="code postal et ville"
-				id="city"
-			/><br>
-			<label for="email">Email</label><br>
-			<input name="email" type="text" id="email" /><br>
-			<button type="submit" name="form-user" id="form-button">Envoyer</button>
-	</form>`;
-	createContainer.append(formUser);
 
-	document.getElementById("form-button").addEventListener("click", function (event) {
-		event.preventDefault();
-		const contact = {
-			firstName: document.getElementById("firstname").value,
-			lastName: document.getElementById("lastname").value,
-			address: document.getElementById("adress").value,
-			city: document.getElementById("city").value,
-			email: document.getElementById("email").value,
-		};
-		let products = [];
-		for (let i = 0; i < cart.length; i++) {
-			products.push(cart[i]._id);
-		}
-		fetch("http://localhost:3000/api/teddies/order", {
-			method: "POST",
-			headers: {
-				"Content-Type": "application/json",
-			},
-			body: JSON.stringify({ contact, products }),
-		})
-			.then((response) => response.json())
-			.then((userData) => {
-				localStorage.setItem("order", JSON.stringify(userData));
-				alert("Merci pour votre commande !");
-				document.location.href = "./orders.html";
-			})
-			.catch((error) => {
-				window.alert(error);
-			});
-	});
+	// FR : gestion du formulaire utilisateur et de l'envoi de la commande
+	// EN : management of user forma and sending'order
+	let formUser = document.getElementById("form-user");
+	let sendOrder = document
+		.getElementById("form-button")
+		.addEventListener("click", function (event) {
+			// FR : vérifie que l'utilisateur a bien rempli les champs correctement
+			// EN : checks that all fileds are correctly filled
+			if (formUser.checkValidity()) {
+				const contact = {
+					firstName: document.getElementById("firstname").value,
+					lastName: document.getElementById("lastname").value,
+					address: document.getElementById("adress").value,
+					city: document.getElementById("city").value,
+					email: document.getElementById("email").value,
+				};
+				let products = [];
+				for (let i = 0; i < cart.length; i++) {
+					products.push(cart[i]._id);
+				}
+				fetch("http://localhost:3000/api/teddies/order", {
+					method: "POST",
+					headers: {
+						"Content-Type": "application/json",
+					},
+					body: JSON.stringify({ contact, products }),
+				})
+					.then((response) => response.json())
+					.then((userData) => {
+						localStorage.setItem("order", JSON.stringify(userData));
+						document.location.href = "./order.html";
+					})
+					.catch((error) => {
+						window.alert(otherError);
+					});
+			}
+		});
 }
+
+/*******************************************
+FR - Amélioration : mettre en place la possibilité de modifier la quantité de produits achetés ou de supprimer le produit du panier
+EN - Improvement : add featured product visuals to encourage customers to buy them
+*******************************************/

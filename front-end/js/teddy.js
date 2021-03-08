@@ -1,17 +1,29 @@
 "use strict";
-import { productId, cart, createContainer, messageError } from "./utils.js";
+import {
+	noTeddy,
+	productId,
+	cart,
+	createContainer,
+	messageError,
+	otherError,
+	pageNotFound,
+	teddiesInCart,
+} from "./utils.js";
 
+console.log("productId = [" + productId + "]");
 if (productId !== null) {
 	fetch(`http://localhost:3000/api/teddies/${productId}`)
 		.then((response) => response.json())
 		.then((teddy) => {
-			console.log(teddy.name);
-			if (teddy.name !== undefined) {
+			if (teddy._id !== undefined) {
+				// FR : créé un titre personnalisé en fonction du produit sélectionné
+				// EN : created a personalized title based on the selected product
+				let dynamicTitle = document.querySelector("title");
+				dynamicTitle.textContent = `Orinours, découvrez ${teddy.name}`;
+
 				let teddyProduct = document.createElement("article");
 				teddyProduct.className = "teddy";
 				teddyProduct.innerHTML += `<img src="${teddy.imageUrl}" class="teddy__picture" alt="Produit : ${teddy.name}" width="900">`;
-				createContainer.prepend(teddyProduct);
-
 				let teddyBox = document.createElement("div");
 				teddyBox.className = "teddy__box";
 				teddyBox.innerHTML += `
@@ -20,25 +32,22 @@ if (productId !== null) {
 					<p class="teddy__box__text-price">Prix : ${teddy.price / 100}€</p>
 					<p class="teddy__box__text-description">${teddy.description}</p>
 				</div>
-						<div class="teddy__box__input">
-							<select name="colors" id="teddy__colors"></select>
-							<button class="add-to-cart btn buy-btn text-center" type="button">
-								Craquer pour ${teddy.name}
-							</button>
-						</div>
-						`;
-				teddyProduct.appendChild(teddyBox);
+				<div class="teddy__box__input">
+					<select name="colors" id="teddy__colors"></select>
+					<button class="add-to-cart btn buy-btn text-center" type="button">
+						Craquer pour ${teddy.name}
+					</button>
+				</div>`;
+				teddyProduct.append(teddyBox);
+				createContainer.append(teddyProduct);
+
 				let teddyColors = document.getElementById("teddy__colors");
 				teddy.colors.forEach(function (product_color) {
 					teddyColors.innerHTML += `<option value="${product_color}">${product_color}</option>`;
 				});
-				let dynamicTitle = document.querySelector("title");
-				dynamicTitle.textContent = `Orinours, découvrez ${teddy.name}`;
 
-				/*
-					FR : création et gestion du localStorage
-					EN : creation and management of localStorage
-					*/
+				// FR : création et gestion du localStorage
+				// EN : creation and management of localStorage
 				let teddyObject = {
 					name: teddy.name,
 					quantity: 1,
@@ -51,41 +60,41 @@ if (productId !== null) {
 
 				let addToCart = document.querySelector(".add-to-cart");
 				addToCart.addEventListener("click", () => {
-					window.location.reload(); // rappeler fonction relaod cart
-					let teddyAdded = document.createElement("div");
-					alert(`${teddy.name} a bien été ajouté à votre panier`);
-					teddyBox.append(teddyAdded);
+					location.reload();
+					teddiesInCart();
 
 					if (cart.length === 0) {
 						cart.push(teddyObject);
-						localStorage.setItem("teddy", JSON.stringify(cart));
+						localStorage.setItem("cart", JSON.stringify(cart));
 					} else {
 						for (let i = 0; i < cart.length; i++) {
 							if (teddyObject.name === cart[i].name) {
 								cart[i].quantity += 1;
-								localStorage.setItem("teddy", JSON.stringify(cart));
+								localStorage.setItem("cart", JSON.stringify(cart));
 								return;
 							}
 						}
 						cart.push(teddyObject);
-						localStorage.setItem("teddy", JSON.stringify(cart));
+						localStorage.setItem("cart", JSON.stringify(cart));
 					}
 				});
 			} else {
-				let wrongTeddy = document.createElement("div");
-				wrongTeddy.className = "container";
-				wrongTeddy.innerHTML += "Cet ourson n'existe pas. Veuillez retourner à l'accueil !";
-				createContainer.appendChild(wrongTeddy);
+				messageError(pageNotFound);
 			}
 		})
 		.catch((error) => {
-			messageError();
+			messageError(otherError);
 			console.error(error);
 		});
 } else {
-	let noTeddy = document.createElement("div");
-	noTeddy.className = "container";
-	noTeddy.innerHTML +=
-		"Vous n'avez pas sélectionné d'ourson. Retournez à l'accueil pour en choisir un !";
-	createContainer.appendChild(noTeddy);
+	messageError(noTeddy);
 }
+
+/*******************************************
+FR - Amélioration : ajouter la possibilité de sélectionner la quantité de produits à acheter
+FR - Amélioration : récupérer de la valeur sélectionnée dans l'input "colors" + le nombre d'oursons en stock
+FR - Amélioration : afficher le nombre d'oursons en stock
+EN - Improvement : add the possibility of selecting the quantity of products to buy
+EN - Improvement : retrieve of the value selected in the "colors" input + the number of bears in stock
+EN - Improvement : display the number of bears in stock
+*******************************************/

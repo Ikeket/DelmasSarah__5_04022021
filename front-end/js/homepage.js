@@ -1,5 +1,5 @@
 "use strict";
-import { createContainer, messageError } from "./utils.js";
+import { createContainer, messageError, otherError } from "./utils.js";
 
 fetch(`http://localhost:3000/api/teddies`)
 	.then((response) => response.json())
@@ -15,20 +15,19 @@ fetch(`http://localhost:3000/api/teddies`)
 			<a href="teddy.html?id=${teddy._id}">
 				<img src="${teddy.imageUrl}" class="teddy__picture" alt="Produit : ${teddy.name}" width="450">
 				<span class="product__box__text">
-						<span class="product__box__text-name name">${teddy.name}</span>
-						<span class="product__box__text-price price">${teddy.price / 100}€</span>
+					<span class="product__box__text-name name">${teddy.name}</span>
+					<span class="product__box__text-price price">${teddy.price / 100}€</span>
 				</span>
 			</a>`;
 			teddiesBox.appendChild(teddyBox);
 		});
 	})
 	.catch((error) => {
-		messageError();
+		messageError(otherError);
 		console.error(error);
 	});
 
-/*
-Améliorations / Improvement
-FR : implémenter la possibilité d'ajouter produit directement dans le panier depuis la homepage
-EN : implement the possibility of adding the product directly on cart from the homepage
-*/
+/*******************************************
+FR - Améliorations : implémenter la possibilité d'ajouter produit directement dans le panier depuis la homepage
+EN - Improvement : implement the possibility of adding the product directly on cart from the homepage
+*******************************************/
