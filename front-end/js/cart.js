@@ -1,14 +1,9 @@
 "use strict";
-import { cart, createContainer, otherError } from "./utils.js";
+import { cart, createContainer, messageError, otherError } from "./utils.js";
 
 // FR : vérifie ce qu'il y a dans le panier pour afficher le contenu du panier ou un message d'erreur à l'utilisateur
 // EN : checks what is in the cart to display the contents of the cart or an error message to the user
-if (cart.length === 0) {
-	let emptyCart = document.createElement("div");
-	emptyCart.className = "container";
-	emptyCart.innerHTML += `Votre panier est vide, et si vous craquiez pour l'un de nos oursons ?`;
-	createContainer.append(emptyCart);
-} else {
+if (cart.length !== 0) {
 	let cartBox = document.createElement("article");
 	cartBox.className = "cart";
 	cartBox.innerHTML += `<div class="cart__price price">Prix</div>`;
@@ -81,10 +76,20 @@ if (cart.length === 0) {
 						document.location.href = "./order.html";
 					})
 					.catch((error) => {
-						window.alert(otherError);
+						console.error(error);
+						messageError(otherError);
 					});
 			}
 		});
+} else {
+	let emptyCart = document.createElement("div");
+	emptyCart.className = "container";
+	emptyCart.innerHTML += `Votre panier est vide, et si vous craquiez pour l'un de nos oursons ?`;
+	createContainer.prepend(emptyCart);
+	// FR : permet de ne pas afficher le formulaire lorsque le panier est vide
+	// EN : allows to not display the form when the cart is empty
+	let hideForm = document.querySelector("#form");
+	hideForm.setAttribute("class", "hide");
 }
 
 /*******************************************

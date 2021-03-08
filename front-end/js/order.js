@@ -1,9 +1,10 @@
 "use strict";
 import { cart, createContainer, sumBuying } from "./utils.js";
 
+// FR : permet d'obtenir la date au moment de la commande
+// EN : allows to obtain the date for the order
 let date = new Date();
 let orderJSON = JSON.parse(localStorage.getItem("order"));
-console.log(orderJSON);
 
 if (orderJSON !== null) {
 	let orders = document.createElement("article");

@@ -49,31 +49,35 @@
 
 			<h2 class="container">Mon panier</h2>
 			<section id="main__container" class="container">
-				<h3>Vos coordonnées</h3>
-				<form method="POST" class="form" id="form-user">
-					<label for="firstame">Prénom</label><br />
-					<input name="firstname" type="text" id="firstname" required /><br />
-					<label for="lastname">Nom</label><br />
-					<input name="lastname" type="text" id="lastname" required /><br />
-					<label for="address">Adresse</label><br />
-					<input
-						name="address"
-						type="text"
-						placeholder="n° et rue"
-						id="adress"
-						required
-					/><br />
-					<input
-						name="address"
-						type="text"
-						placeholder="code postal et ville"
-						id="city"
-						required
-					/><br />
-					<label for="email">Email</label><br />
-					<input name="email" type="email" id="email" required /><br />
-					<button type="submit" name="form-user" id="form-button">Envoyer</button>
-				</form>
+				<div id="form">
+					<h3>Vos coordonnées</h3>
+					<form method="POST" class="form" id="form-user">
+						<label for="firstame">Prénom</label><br />
+						<input name="firstname" type="text" id="firstname" required /><br />
+						<label for="lastname">Nom</label><br />
+						<input name="lastname" type="text" id="lastname" required /><br />
+						<label for="address">Adresse</label><br />
+						<input
+							name="address"
+							type="text"
+							placeholder="n° et rue"
+							id="adress"
+							required
+						/><br />
+						<input
+							name="address"
+							type="text"
+							placeholder="code postal et ville"
+							id="city"
+							required
+						/><br />
+						<label for="email">Email</label><br />
+						<input name="email" type="email" id="email" required /><br />
+						<button type="submit" name="form-user" id="form-button">
+							Passer la commande
+						</button>
+					</form>
+				</div>
 			</section>
 
 			<footer id="footer" class="footer">
